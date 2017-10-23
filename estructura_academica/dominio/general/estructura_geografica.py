@@ -28,7 +28,7 @@ class Region(ObjetoValor):
         return self._tipo_region + ":" + self._nombre
 
 
-class NodoGeografico():
+class NodoGeografico:
 
     @property
     def region(self):
@@ -104,7 +104,7 @@ class Departamento(NodoGeografico):
 
 
 
-class Nodo():
+class Nodo:
 
     @property
     def elemento(self):
@@ -123,7 +123,7 @@ class Nodo():
     def __str__(self):
         return self.elemento.__str__()
 
-class ArbolJerarquico():
+class ArbolJerarquico:
 
     def __init__(self, nodo_origen):
         self._nodo_origen = nodo_origen

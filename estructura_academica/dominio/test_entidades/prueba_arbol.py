@@ -6,7 +6,7 @@ Autor = admin
 Fecha creación = 23/10/16
 --------------------------
 """
-from estructura_academica.dominio.entidades.estructura_geografica import *
+from estructura_academica.dominio.general.estructura_geografica import *
 
 
 

@@ -8,7 +8,9 @@ Fecha creación = 22/10/16
 """
 
 from estructura_academica.dominio.entidades.objeto_valor import *
-from estructura_academica.dominio.entidades.estructura_geografica import *
+
+from estructura_academica.dominio.general.estructura_geografica import *
+
 
 class Nombre(ObjetoValor):
 

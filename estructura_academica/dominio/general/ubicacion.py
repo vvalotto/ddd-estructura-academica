@@ -7,8 +7,8 @@ Fecha creación = 29/10/16
 --------------------------
 """
 
+from estructura_academica.dominio.general.domicilio import *
 from .objeto_valor import *
-from .domicilio import *
 
 
 class Ubicacion(ObjetoValor):

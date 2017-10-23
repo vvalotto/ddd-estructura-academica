@@ -7,7 +7,7 @@ Fecha creación = 16/10/16
 --------------------------
 """
 
-from estructura_academica.dominio.entidades.domicilio import *
+from estructura_academica.dominio.general.domicilio import *
 
 mi_domicilio = Domicilio('Corrientes',
                           659,

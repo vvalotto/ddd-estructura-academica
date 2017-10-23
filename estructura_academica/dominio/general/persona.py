@@ -8,7 +8,7 @@ Fecha creación = 23/10/16
 """
 from .nombre import *
 
-class Persona():
+class Persona:
 
     @property
     def id(self):
