@@ -20,8 +20,8 @@ class Calle(TextoNoVacio):
 
 class Numero(TextoNoVacio):
 
-    def __init__(self, piso="Sin Numero"):
-        super().__init__(piso)
+    def __init__(self, numero="Sin Numero"):
+        super().__init__(numero)
         return
 
 
@@ -77,7 +77,7 @@ class Domicilio(ObjetoValor):
             "  " + str(self._numero) + "\n" + \
             "  " + str(self._calle) + "\n" + \
             "  " + str(self._departamento) + "\n" + \
-            "  " + str(self._piso.texto) + "\n"
+            "  " + str(self._piso) + "\n"
 
     def _validar_calle(self):
         pass

@@ -1,5 +1,5 @@
 """
-
+Clase Abstracta Contexto para uso de repositorios
 """
 from abc import ABCMeta, abstractmethod
 

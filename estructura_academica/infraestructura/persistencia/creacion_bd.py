@@ -1,12 +1,6 @@
-from sqlalchemy import MetaData
-from infraestructura.persistencia.contexto.contexto_database import *
-from infraestructura.persistencia.repositorios.administracion import *
-from aplicacion.managers.core import *
-from dominio.entidades.administracion import *
+from estructura_academica.infraestructura.persistencia.contexto.contexto_database import *
 
-DBEvaluacion = ContextoDB('sqlite:///pysea.sqlite')
+DBEvaluacion = ContextoDB('mysql+pymysql://pysea_admin:pysea@localhost:3306/pysea')
 
 DBEvaluacion.inicializar_tablas()
-metadata = MetaData(DBEvaluacion._recurso)
-DBEvaluacion._recurso.echo = True
-metadata.create_all()
+

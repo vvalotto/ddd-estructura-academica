@@ -1,10 +1,10 @@
 """
-
+Clase Abstracta que define el repositorio de la Unidad Academica
 """
-from abc import *
+from .BaseRepositorio import *
 
 
-class BaseRepositorioUnidadAcademica(metaclass=ABCMeta):
+class BaseRepositorioUnidadAcademica(BaseRepositorio):
 
     @abstractmethod
     def guardar(self, unidad_academica):
@@ -12,4 +12,16 @@ class BaseRepositorioUnidadAcademica(metaclass=ABCMeta):
 
     @abstractmethod
     def recuperar(self, id):
+        pass
+
+    @abstractmethod
+    def validar_existencia(self, criterio):
+        pass
+
+    @abstractmethod
+    def recuperar_por_nombre(self, nombre):
+        pass
+
+    @abstractmethod
+    def obtener_todo(self):
         pass
