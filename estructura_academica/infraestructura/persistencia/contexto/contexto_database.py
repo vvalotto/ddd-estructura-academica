@@ -4,8 +4,7 @@ Definición del mecanismo de persistencia (Tecnología para almacenar los datos)
 import pymysql
 
 from sqlalchemy import create_engine
-from estructura_academica.infraestructura.persistencia.modelo.base_de_datos import *
-from estructura_academica.infraestructura.persistencia.contexto.contexto import *
+from .contexto import *
 
 
 class ContextoDB(BaseContexto):
@@ -35,7 +34,7 @@ class ContextoDB(BaseContexto):
         Base.metadata.create_all()
 
 
-class ContextDBMySQL(ContextoDB):
+class ContextoDBMySQL(ContextoDB):
     """
     Contexto que se especializa en la conexión con MySQL
     """

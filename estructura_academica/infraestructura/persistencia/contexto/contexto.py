@@ -20,8 +20,18 @@ class BaseContexto(metaclass=ABCMeta):
         if recurso is None or recurso == "":
             raise Exception("Nombre de recurso vacio")
         self._recurso = recurso
+        self._sesion = None
         return
 
     @property
     def recurso(self):
         return self._recurso
+
+    @property
+    def sesion(self):
+        return self._sesion
+
+    @sesion.setter
+    def sesion(self, valor):
+        self._sesion = valor
+        return

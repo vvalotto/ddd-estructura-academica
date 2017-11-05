@@ -6,8 +6,20 @@ from abc import *
 
 class BaseRepositorio(metaclass=ABCMeta):
 
+    @property
+    def contexto(self):
+        return self._contexto
+
+    def __init__(self, contexto):
+        self._contexto = contexto
+        return
+
     @abstractmethod
-    def guardar(self, entidad):
+    def agregar(self, entidad):
+        pass
+
+    @abstractmethod
+    def actualizar(self, entidad):
         pass
 
     @abstractmethod

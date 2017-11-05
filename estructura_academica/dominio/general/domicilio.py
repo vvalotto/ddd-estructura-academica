@@ -71,13 +71,13 @@ class Domicilio(ObjetoValor):
     def obtener_atributos_incluidos_en_chequeo_igualdad(self):
         return [self._calle, self._numero, self._departamento, self._piso]
 
-    def __str__(self):
+    def __repr__(self):
         return \
             "Domicilio: " + "\n" + \
             "  " + str(self._numero) + "\n" + \
             "  " + str(self._calle) + "\n" + \
             "  " + str(self._departamento) + "\n" + \
-            "  " + str(self._piso) + "\n"
+            "  " + str(self._piso)
 
     def _validar_calle(self):
         pass

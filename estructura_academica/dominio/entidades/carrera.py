@@ -28,8 +28,8 @@ class IdUnidadAcademica(ObjetoValor):
 class CodigoCarrera(ObjetoValor):
 
     @property
-    def id(self):
-        return self._id
+    def codigo(self):
+        return self._codigo_carrera
 
     def __init__(self,codigo_carrera):
 
@@ -42,7 +42,7 @@ class CodigoCarrera(ObjetoValor):
     def obtener_atributos_incluidos_en_chequeo_igualdad(self):
         return [self._codigo_carrera]
 
-    def __str__(self):
+    def __repr__(self):
         return self._codigo_carrera
 
 

@@ -7,11 +7,15 @@ from estructura_academica.dominio.base.texto_no_vacio import *
 
 
 class NombreUnidadAcademica(TextoNoVacio):
-    pass
+
+    def __str__(self):
+        return self.texto
 
 
 class NombreUniversidad(TextoNoVacio):
-    pass
+
+    def __str__(self):
+        return self.texto
 
 
 class UnidadAcademica(Entidad):
@@ -44,15 +48,17 @@ class UnidadAcademica(Entidad):
         return
 
     def __init__(self, nombre, universidad, domicilio):
+        """
+        Construye la entidad
+        :param nombre: OV Nombre de la unidad academica
+        :param universidad: OV nombre de la universidad
+        :param domicilio: OV Domicilio
+        """
         super().__init__()
         self._nombre = nombre
         self._universidad = universidad
         self._domicilio = domicilio
         return
 
-    def __str__(self):
+    def __repr__(self):
         return str(self.nombre) + " - " + str(self._universidad)
-
-
-
-

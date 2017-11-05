@@ -13,7 +13,7 @@ class UnidadAcademicaDTO(Base):
     """
     __tablename__ = "td_unidad_academica"
 
-    id = Column(UUID(), primary_key=True)
+    id = Column(String(36), primary_key=True)
     nombre_unidad_academica = Column(String(200), nullable=False)
     nombre_universidad = Column(String(200), nullable=False)
     domicilio_calle = Column(String(50), nullable=False)
@@ -32,7 +32,7 @@ class CarreraDTO(Base):
     """
     __tablename__ = "td_carrera"
 
-    id = Column(UUID(), primary_key=True)
+    id = Column(String(36), primary_key=True)
     nombre_carrera = Column(String(100), nullable=False)
     codigo_carrera = Column(String(20), nullable=False)
     id_unidad_academica = Column(String(36), ForeignKey(UnidadAcademicaDTO.id))

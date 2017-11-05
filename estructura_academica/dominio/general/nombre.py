@@ -30,9 +30,9 @@ class Nombre(ObjetoValor):
         :param apellido:
         """
         if nombres is None:
-            raise "No hay Mombre"
+            raise Exception("No hay Mombre")
         if apellido is None:
-            raise "no hay apellido"
+            raise Exception("no hay apellido")
 
         self._nombres = nombres
         self._apellido = apellido
@@ -45,5 +45,5 @@ class Nombre(ObjetoValor):
         """
         return self._apellido + ', ' + self._nombres
 
-    def __str__(self):
+    def __repr__(self):
         return  self.nombre + ' ' + self.apellido

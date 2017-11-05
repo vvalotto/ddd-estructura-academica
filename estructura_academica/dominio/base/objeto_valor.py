@@ -13,7 +13,7 @@ class ObjetoValor(metaclass=ABCMeta):
 
     def __eq__(self, otro):
         '''
-        Evalua la igualdad de dos Objetos Valot
+        Evalua la igualdad de dos Objetos Valor
         :param otro: OV contra el que se quiere comparar (izquierda del == )
         :return: Verdadero o falso
         '''

@@ -1,13 +1,17 @@
 """
 Clase Abstracta que define el repositorio de la Unidad Academica
 """
-from .BaseRepositorio import *
+from .base_repositorio import *
 
 
 class BaseRepositorioUnidadAcademica(BaseRepositorio):
 
     @abstractmethod
-    def guardar(self, unidad_academica):
+    def agregar(self, entidad):
+        pass
+
+    @abstractmethod
+    def actualizar(self, entidad):
         pass
 
     @abstractmethod

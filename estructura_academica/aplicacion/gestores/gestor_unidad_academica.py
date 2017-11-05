@@ -1,8 +1,9 @@
 """
 Servicio de Aplicacion que gestiona el tratamiento de las unidades academicas
 """
+from sqlalchemy.orm import sessionmaker
+
 from estructura_academica.dominio.entidades.unidad_academica import *
-from estructura_academica.dominio.general.domicilio import *
 
 
 class GestorUnidadAcademica:
@@ -15,6 +16,7 @@ class GestorUnidadAcademica:
     def __init__(self):
         self._unidad_academica = None
         self._repositorio = None
+        self._nuevo = False
         return
 
     def crear_unidad_academica(self, nombre_unidad,
@@ -30,6 +32,7 @@ class GestorUnidadAcademica:
         self._unidad_academica = UnidadAcademica(nombre_unidad,
                                                  nombre_universidad,
                                                  domicilio)
+        self._nuevo = True
         return self._unidad_academica
 
     def asignar_repositorio(self, repositorio):
@@ -42,36 +45,58 @@ class GestorUnidadAcademica:
         return
 
     def guardar_unidad_academica(self):
-        self._repositorio.guardar(self._unidad_academica)
+        self._abrir_unidad_de_trabajo()
+        if self._nuevo:
+            try:
+                self._repositorio.agregar(self._unidad_academica)
+            except Exception():
+                print('Error al guardar')
+        else:
+            try:
+                self._repositorio.actualizar(self._unidad_academica)
+            except Exception():
+                print('Error al guardar')
+        self._cerrar_unidad_de_trabajo()
+        self._nuevo = False
+        return
 
     def recuperar_unidad_academica_por_nombre(self, nombre):
-        dto = self._repositorio.recuperar_por_nombre(nombre)
-        self._unidad_academica = self._mapear_DTO_a_unidad_academica(dto)
+        self._abrir_unidad_de_trabajo()
+        self._unidad_academica = self._repositorio.recuperar_por_nombre(nombre)
+        self._cerrar_unidad_de_trabajo()
         return self._unidad_academica
 
     def recuperar_unidad_academica(self, id_unidad_academica):
+        self._abrir_unidad_de_trabajo()
+        """
         dto = self._repositorio.recuperar(id_unidad_academica)
         self._unidad_academica = self._mapear_DTO_a_unidad_academica(dto)
+        """
+        self._unidad_academica = self._repositorio.recuperar(id_unidad_academica)
+        self._cerrar_unidad_de_trabajo()
         return self._unidad_academica
 
     def obtener_todas_las_unidades_academicas(self):
-        lista_unidad_academica = []
-        for ua in list(self._repositorio.obtener_todas()):
+        self._abrir_unidad_de_trabajo()
+        lista_unidad_academica = self._repositorio.obtener_todo()
+        """
+        for ua in list(self._repositorio.obtener_todo()):
             lista_unidad_academica.append(self._mapear_DTO_a_unidad_academica(ua))
+        """
+        self._cerrar_unidad_de_trabajo()
         return lista_unidad_academica
 
     def existe_unidad_academica(self, nombre):
-        return self._repositorio.validar_exitencia(nombre)
+        self._abrir_unidad_de_trabajo()
+        valida = self._repositorio.validar_existencia(nombre)
+        self._cerrar_unidad_de_trabajo()
+        return valida
 
-    def _mapear_DTO_a_unidad_academica(self, dto_unidad_academica):
-        nombre = NombreUnidadAcademica(dto_unidad_academica.nombre_unidad_academica)
-        universidad = NombreUniversidad(dto_unidad_academica.nombre_universidad)
-        domicilio = Domicilio(dto_unidad_academica.domicilio_calle,
-                              dto_unidad_academica.domicilio_numero,
-                              dto_unidad_academica.domicilio_piso,
-                              dto_unidad_academica.domicilio_depto)
+    def _abrir_unidad_de_trabajo(self):
+        sesion = sessionmaker(bind=self._repositorio.contexto.recurso)
+        self._repositorio.contexto.sesion = sesion()
+        return
 
-        return UnidadAcademica(nombre, universidad, domicilio)
-
-    def _mapear_unidad_academica_a_DTO(self):
-        pass
+    def _cerrar_unidad_de_trabajo(self):
+        self._repositorio.contexto.sesion.commit()
+        return
