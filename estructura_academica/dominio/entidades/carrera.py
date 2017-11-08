@@ -102,3 +102,6 @@ class Carrera(Entidad):
         self._nombre_carrera = nombre_carrera
         self._unidad_academica = id_unidad_academica
         return
+
+    def __repr__(self):
+        return str(self._codigo_carrera) + " : " + str(self._nombre_carrera)

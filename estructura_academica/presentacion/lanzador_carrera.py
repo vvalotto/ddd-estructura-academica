@@ -25,11 +25,17 @@ mi_gestor_carrera = GestorCarrera()
 mi_repositorio = DBRepositorioCarrera(mi_contexto, MapeadorDatosCarrera(mi_contexto))
 mi_gestor_carrera.asignar_repositorio(mi_repositorio)
 
-nombre = NombreCarrera('Ingeniería de Software')
-codigo = CodigoCarrera('BI130')
+nombre = NombreCarrera('Licenciatura en Bioinformática')
+codigo = CodigoCarrera('ING01')
 unidad_academica = IdUnidadAcademica(mi_ua.identificacion)
 
 print(mi_gestor_carrera.crear_carrera(nombre, codigo, unidad_academica))
 
-mi_gestor_carrera.guardar_carrera()
+# mi_gestor_carrera.guardar_carrera()
+
+print(mi_gestor_carrera.recuperar_carrera_por_nombre('Licenciatura en Bioinformática'))
+
+# for carrera in list(mi_gestor_carrera.obtener_todas_las_carreras_por_ua(mi_ua.identificacion)):
+#    print(carrera)
+
 

@@ -111,3 +111,6 @@ class Materia(Entidad):
         self._plan = plan
         self._id_carrera = id_carrera
         return
+
+    def __repr__(self):
+        return

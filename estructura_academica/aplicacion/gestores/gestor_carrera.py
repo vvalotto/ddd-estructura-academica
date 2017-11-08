@@ -55,8 +55,7 @@ class GestorCarrera:
 
     def recuperar_carrera_por_nombre(self, nombre):
         self._abrir_unidad_de_trabajo()
-        dto = self._repositorio.recuperar_por_nombre(nombre)
-        self._carrera = self._mapear_DTO_a_carrera(dto)
+        self._carrera = self._repositorio.recuperar_por_nombre(nombre)
         self._cerrar_unidad_de_trabajo()
         return self._carrera
 
