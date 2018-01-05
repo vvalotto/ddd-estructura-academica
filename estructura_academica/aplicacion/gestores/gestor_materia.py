@@ -1,32 +1,34 @@
 """
-Servicio de Aplicacion que gestiona el tratamiento de las unidades academicas
+Servicio de Aplicacion que gestiona el tratamiento de las materias
 """
 from sqlalchemy.orm import sessionmaker
 
-from estructura_academica.dominio.entidades.carrera import *
+from estructura_academica.dominio.entidades.materia import *
 
 
 class GestorCarrera:
     """
     Clase de aplicación que es la responsable de realizar la
-    administración de la entidad Carrera
+    administración de la entidad Materia
     Basicamente maneja los CRUD de la entidad, no tiene otra
     responsabilidad
     """
     def __init__(self):
-        self._carrera = None
+        self._materia = None
         self._repositorio = None
         self._nuevo = False
         return
 
-    def crear_carrera(self, codigo_carrera,
-                      nombre_carrera,
-                      id_unidad_academica):
-        self._carrera = Carrera(nombre_carrera,
-                                codigo_carrera,
-                                id_unidad_academica)
+    def crear_materia(self, codigo_materia,
+                      nombre_materia,
+                      plan,
+                      id_carrera):
+        self._materia = Materia(codigo_materia,
+                      nombre_materia,
+                      plan,
+                      id_carrera)
         self._nuevo = True
-        return self._carrera
+        return self._materia
 
     def asignar_repositorio(self, repositorio):
         """
@@ -37,38 +39,38 @@ class GestorCarrera:
         self._repositorio = repositorio
         return
 
-    def guardar_carrera(self):
+    def guardar_materia(self):
         self._abrir_unidad_de_trabajo()
         if self._nuevo:
             try:
-                self._repositorio.agregar(self._carrera)
+                self._repositorio.agregar(self._materia)
             except Exception():
                 print('Error al guardar')
         else:
             try:
-                self._repositorio.actualizar(self._carrera)
+                self._repositorio.actualizar(self._materia)
             except Exception():
                 print('Error al guardar')
         self._cerrar_unidad_de_trabajo()
         self._nuevo = False
         return
 
-    def recuperar_carrera_por_nombre(self, nombre):
+    def recuperar_materia_por_nombre(self, nombre):
         self._abrir_unidad_de_trabajo()
-        self._carrera = self._repositorio.recuperar_por_nombre(nombre)
+        self._materia = self._repositorio.recuperar_por_nombre(nombre)
         self._cerrar_unidad_de_trabajo()
-        return self._carrera
+        return self._materia
 
-    def recuperar_carrera(self, id_carrera):
+    def recuperar_materia(self, id_materia):
         self._abrir_unidad_de_trabajo()
-        self._carrera = self._repositorio.recuperar(id_carrera)
+        self._materia = self._repositorio.recuperar(id_materia)
         self._cerrar_unidad_de_trabajo()
-        return self._carrera
+        return self._materia
 
-    def obtener_todas_las_carreras_por_ua(self, id_unidad_academica):
+    def obtener_todas_las_materias_por_carrera(self, id_unidad_academica):
         pass
 
-    def existe_carrera(self, nombre):
+    def existe_materia(self, nombre):
         self._abrir_unidad_de_trabajo()
         valida = self._repositorio.validar_exitencia(nombre)
         self._cerrar_unidad_de_trabajo()

@@ -2,7 +2,6 @@
 Servicio de Aplicacion que gestiona el tratamiento de las unidades academicas
 """
 from sqlalchemy.orm import sessionmaker
-
 from estructura_academica.dominio.entidades.unidad_academica import *
 
 

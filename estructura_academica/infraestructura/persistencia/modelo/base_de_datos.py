@@ -36,3 +36,14 @@ class CarreraDTO(Base):
     nombre_carrera = Column(String(100), nullable=False)
     codigo_carrera = Column(String(20), nullable=False)
     id_unidad_academica = Column(String(36), ForeignKey(UnidadAcademicaDTO.id))
+
+
+class MateriaDTO(Base):
+    """
+    Tabla Materia, relacionada con Carrera
+    """
+    id = Column(String(36), primary_key=True)
+    codigo_materia = Column(String(20), nullable=False)
+    nombre_materia = Column(String(100), nullable=False)
+    plan = Column(String(20), nullable=False)
+    id_materia = Column(String(36), ForeignKey(CarreraDTO.id))
