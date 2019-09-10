@@ -2,10 +2,9 @@
 Definición del mecanismo de persistencia (Tecnología para almacenar los datos)
 """
 
-from sqlalchemy import create_engine
 from .contexto_database import *
 
-class ContextoDBMySQL(ContextoDB):
+class ContextoDBSQLite(ContextoDB):
     """
     Contexto que se especializa en la conexión con SQlite
     """

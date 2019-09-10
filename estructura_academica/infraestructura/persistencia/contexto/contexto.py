@@ -11,7 +11,7 @@ class BaseContexto(metaclass=ABCMeta):
     @abstractmethod
     def __init__(self, recurso):
         """
-        Se crea el contexto, donde el pasa el recurso fisico donde residen los datos
+        Se crea el contexto, donde se pasa el recurso fisico donde residen los datos
         junto con esto se crea el recurso fisico
         :param recurso: definicion del recurso fisico
         :return:

@@ -42,6 +42,8 @@ class MateriaDTO(Base):
     """
     Tabla Materia, relacionada con Carrera
     """
+    __tablename__ = "td_materia"
+
     id = Column(String(36), primary_key=True)
     codigo_materia = Column(String(20), nullable=False)
     nombre_materia = Column(String(100), nullable=False)
